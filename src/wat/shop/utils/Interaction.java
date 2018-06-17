@@ -1,10 +1,11 @@
 package wat.shop.utils;
 
+import java.util.Comparator;
 import java.util.HashMap;
 
 import hla.rti1516e.encoding.EncoderFactory;
 
-public class Interaction {
+public class Interaction{
 	
 	private String interactionName;
 	private HashMap<String, byte[]> parameters = new HashMap<String, byte[]>();
@@ -57,6 +58,21 @@ public class Interaction {
 			return Encoder.decodeDouble(factory, data);
 		}
 		return Double.MAX_VALUE;
+	}
+
+	public static class TimeComparator implements Comparator<Interaction> {
+
+		@Override
+		public int compare(Interaction o1, Interaction o2) {
+			if(o1 == o2) {
+				return 0;
+			}
+			else if(o1.getTime() > o2.getTime()) 
+				return 1;
+			else
+				return -1;
+		}
+		
 	}
 	
 }

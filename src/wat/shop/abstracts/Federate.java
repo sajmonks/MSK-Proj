@@ -119,6 +119,8 @@ public abstract class Federate {
 		while(isRunning) {
 			advanceTime( stepTime );
 			
+			//Sorting
+			fedamb.sortInteractions();
 			for(Interaction inter : fedamb.getInteractions()) {
 				handleInteraction(inter);
 			}
@@ -197,7 +199,7 @@ public abstract class Federate {
 	
 	private void advanceTime( double timestep ) throws RTIexception
 	{
-		log("Trying to advance from " + fedamb.federateTime + " to " + (fedamb.federateTime + timestep ) );
+		//log("Trying to advance from " + fedamb.federateTime + " to " + (fedamb.federateTime + timestep ) );
 		fedamb.isAdvancing = true;
 		HLAfloat64Time time = timeFactory.makeTime( fedamb.federateTime + timestep );
 		rtiamb.timeAdvanceRequest( time );

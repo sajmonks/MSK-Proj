@@ -2,7 +2,6 @@ package wat.shop.gui;
 
 import hla.rti1516e.exceptions.RTIexception;
 import wat.shop.abstracts.Federate;
-import wat.shop.utils.Encoder;
 import wat.shop.utils.Interaction;
 
 public class GUIFederate extends Federate {

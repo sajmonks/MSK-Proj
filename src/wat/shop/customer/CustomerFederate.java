@@ -54,7 +54,8 @@ public class CustomerFederate extends Federate {
 		if(inter.getName() == "NadszedlKlient") {
 			Customer customer = new Customer();
 			log("Dodano klienta id = " + customer.getId() + ", przywilej=" + customer.isPrivileged() + 
-					", czas zakupow=" + customer.getShoppingTime() + ", ilosc zakupow=" + customer.getProductNum());
+					", czas zakupow=" + customer.getShoppingTime() + ", ilosc zakupow=" + customer.getProductNum() +
+					", uprzywilejowany=" + customer.isPrivileged());
 			customerList.add(customer);
 		}
 		if(inter.getName() == "PrzydzielenieDoKolejki") {

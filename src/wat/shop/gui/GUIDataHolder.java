@@ -28,7 +28,7 @@ public class GUIDataHolder {
 	public void update() {
 		qidLabel.setText("" + qid);
 		clientLabel.setText("" + (client == -1 ? "Brak" : "" + client) );
-		countLabel.setText("" + count);
+		countLabel.setText("" + (count <= 0 ? "Brak" : "" + count) );
 		statusLabel.setText("" + (status == true ? "Otwarta" : "Zamkniêta") );
 	}
 }

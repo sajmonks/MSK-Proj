@@ -92,7 +92,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Średni czas obsługi:" />
+                              <Label text="Średni czas pobytu:" />
                               <Label text="Średnia ilość zakupów:" GridPane.rowIndex="1" />
                               <Label prefHeight="40.0" prefWidth="143.0" text="Średni stosunek ilości klientów do otwartych kas:" wrapText="true" GridPane.rowIndex="2" />
                               <Label fx:id="labelAverageTime" prefHeight="17.0" prefWidth="54.0" text="0" GridPane.columnIndex="1" />

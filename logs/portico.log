@@ -1,2 +1,1 @@
-11:33:44,137 ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=ShopFederation
-on
+17:58:02,047 ERROR [main] portico.lrc.jgroups: FAILURE createFederation: already exists, name=ShopFederation

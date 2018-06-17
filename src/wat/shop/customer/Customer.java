@@ -16,7 +16,7 @@ public class Customer {
 		lastId++;
 		
 		//Szansa 10% na przywilej
-		if(new Random().nextInt(10) == -1) {
+		if(new Random().nextInt(9) == 0) {
 			privileged = true;
 		}
 		

@@ -31,19 +31,39 @@ public class CustomerQueue {
 			return set.size()-1;
 		}
 		else { //Uprzywilejowany
-			if(set.size() == 0) {
+			
+			//Jesli kolejka jest pusta to ustawianie na poczatek kolejki lub jesli
+			//kolejka jest rowna jeden i aktualny klient jest w trakcie rozliczania
+			if(set.size() == 0 || (set.size() == 1 && federate.getCustomer(set.get(0).index).isChecking()) ) {
 				set.add(new CustomerSet(customer.getId()));
 				customerQueues.put(qid, set);
-				return 0;
+				System.out.println("Uprzywilejowany ustawiony na koniec kolejki");
+				return set.size()-1;
 			}
-			else {
+			else {	
 				for(int i = 0; i < set.size(); i++) {
 					Customer c = federate.getCustomer(set.get(i).index);
+					
+					//Jesli jest aktualnie obslugiwany to pomijany
 					if(c.isChecking()) { continue; }
+					
+					//Jesli nie jest obslugiwany i nie jest uprzywilejowany
 					if(!c.isPrivileged()) {
-						set.add(i, new CustomerSet(set.get(i).index));
+								
+						//Dodawanie nowego miejsca do przesuniêcia
+						set.add(set.get(set.size() - 1));
+						
+						//Przesuwanie listy w prawo
+						for(int j = set.size() - 1; j > i; j--) {
+							set.set(j, set.get(j - 1) );
+							System.out.println("Przesuwanie id=" + set.get(j).index + " na pozycje="+j);
+						}
+						
+						//Ustawianie na miejscu
+						set.set(i, new CustomerSet(customer.getId()));
+						
 						customerQueues.put(qid, set);
-						return set.get(i).index;
+						return i;	
 					}
 				}
 			}

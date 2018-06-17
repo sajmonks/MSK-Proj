@@ -2,8 +2,8 @@ package wat.shop.abstracts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Set;
 
 import hla.rti1516e.FederateHandleSet;
 import hla.rti1516e.InteractionClassHandle;
@@ -15,11 +15,6 @@ import hla.rti1516e.ParameterHandleValueMap;
 import hla.rti1516e.SynchronizationPointFailureReason;
 import hla.rti1516e.TransportationTypeHandle;
 import hla.rti1516e.exceptions.FederateInternalError;
-import hla.rti1516e.exceptions.FederateNotExecutionMember;
-import hla.rti1516e.exceptions.InvalidInteractionClassHandle;
-import hla.rti1516e.exceptions.NameNotFound;
-import hla.rti1516e.exceptions.NotConnected;
-import hla.rti1516e.exceptions.RTIinternalError;
 import hla.rti1516e.time.HLAfloat64Time;
 import wat.shop.utils.Encoder;
 import wat.shop.utils.Interaction;
@@ -160,6 +155,10 @@ public abstract class Ambassador extends NullFederateAmbassador {
 		if(!interactionParameters.containsKey(handle) && params != null) {
 				interactionParameters.put(handle, new ArrayList<>(Arrays.asList(params)));
 		}
+	}
+	
+	public void sortInteractions() {
+		Collections.sort(interactionList, new Interaction.TimeComparator());
 	}
 	
 	public ArrayList<Interaction> getInteractions() {
