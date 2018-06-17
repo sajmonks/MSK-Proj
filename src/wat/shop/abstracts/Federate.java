@@ -128,7 +128,7 @@ public abstract class Federate {
 			fedamb.clearInteractions();
 			
 			onRun();
-			waitForUser();
+			//waitForUser();
 			iterationPassed++;
 		}
 		
