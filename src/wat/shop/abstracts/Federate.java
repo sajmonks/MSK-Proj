@@ -38,7 +38,8 @@ import hla.rti1516e.time.HLAfloat64TimeFactory;
 import wat.shop.utils.Interaction;
 
 public abstract class Federate {
-	public static final int ITERATIONS = 20;
+	public static final int ITERATIONS = 250;
+	public static int iterationPassed = 0;
 
 	public static final String READY_TO_RUN = "READY_TO_RUN";
 	public RTIambassador rtiamb;
@@ -116,7 +117,7 @@ public abstract class Federate {
 		publishAndSubscribe();
 		
 		log("Rozpoczynanie symulacji");
-		while(isRunning) {
+		while(isRunning && iterationPassed < ITERATIONS) {
 			advanceTime( stepTime );
 			
 			//Sorting
@@ -127,6 +128,8 @@ public abstract class Federate {
 			fedamb.clearInteractions();
 			
 			onRun();
+			waitForUser();
+			iterationPassed++;
 		}
 		
 		rtiamb.resignFederationExecution( ResignAction.DELETE_OBJECTS );

@@ -21,7 +21,7 @@ public class ShopFederate extends Federate {
 			log("Wysylanie nadejcie klienta.");
 			lastId++;
 		}
-		this.waitForUser();
+		//this.waitForUser();
 	}
 	
 	@Override

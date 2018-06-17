@@ -15,6 +15,7 @@ import hla.rti1516e.ParameterHandleValueMap;
 import hla.rti1516e.SynchronizationPointFailureReason;
 import hla.rti1516e.TransportationTypeHandle;
 import hla.rti1516e.exceptions.FederateInternalError;
+import hla.rti1516e.exceptions.RTIexception;
 import hla.rti1516e.time.HLAfloat64Time;
 import wat.shop.utils.Encoder;
 import wat.shop.utils.Interaction;
@@ -103,7 +104,15 @@ public abstract class Ambassador extends NullFederateAmbassador {
 	                                LogicalTime time,
 	                                OrderType receivedOrdering,
 	                                SupplementalReceiveInfo receiveInfo )
-	    throws FederateInternalError
+	    throws FederateInternalError {
+		
+		Interaction interaction = parseInteraction(interactionClass, theParameters, time);
+		interactionList.add(interaction);
+
+	}
+	
+	public Interaction parseInteraction(InteractionClassHandle interactionClass, ParameterHandleValueMap theParameters, 
+			LogicalTime time) 
 	{
 		ArrayList<String> debugParams = new ArrayList<String>();
 		ArrayList<byte[] > debugValues = new ArrayList<byte[] >();
@@ -142,9 +151,10 @@ public abstract class Ambassador extends NullFederateAmbassador {
 				}
 				log(debugMessage);
 				
-				interactionList.add(interaction);
+				return interaction;
 			}
 		}
+		return null;
 	}
 	
 	public void registerHandle(String name, InteractionClassHandle handle, String [] params) {

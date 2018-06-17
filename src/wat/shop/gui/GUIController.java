@@ -2,12 +2,10 @@ package wat.shop.gui;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 
 public class GUIController {

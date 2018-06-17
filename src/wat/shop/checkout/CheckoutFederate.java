@@ -2,13 +2,6 @@ package wat.shop.checkout;
 
 import java.util.ArrayList;
 
-import hla.rti1516e.exceptions.FederateNotExecutionMember;
-import hla.rti1516e.exceptions.InteractionClassNotDefined;
-import hla.rti1516e.exceptions.InteractionClassNotPublished;
-import hla.rti1516e.exceptions.InteractionParameterNotDefined;
-import hla.rti1516e.exceptions.InvalidLogicalTime;
-import hla.rti1516e.exceptions.NameNotFound;
-import hla.rti1516e.exceptions.NotConnected;
 import hla.rti1516e.exceptions.RTIexception;
 import hla.rti1516e.exceptions.RTIinternalError;
 import wat.shop.abstracts.Federate;
