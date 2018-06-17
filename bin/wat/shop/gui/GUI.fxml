@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="372.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="372.0" prefWidth="519.0" spacing="20.0">
+         <children>
+            <Label text="Zobrazowanie symulacji">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="338.0" prefWidth="519.0" spacing="10.0">
+               <children>
+                  <ScrollPane prefHeight="338.0" prefWidth="310.0">
+                     <content>
+                        <GridPane fx:id="grid" alignment="TOP_CENTER" prefHeight="326.0" prefWidth="307.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="43.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="75.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="76.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="77.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Kasa" />
+                              <Label prefHeight="17.0" prefWidth="71.0" text="Obsługiwany" GridPane.columnIndex="1" />
+                              <Label prefHeight="48.0" prefWidth="85.0" text="Oczekujący ludzie" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" />
+                              <Label prefHeight="17.0" prefWidth="46.0" text="Status" GridPane.columnIndex="3" />
+                           </children>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+                  <VBox alignment="TOP_CENTER" prefHeight="338.0" prefWidth="210.0">
+                     <children>
+                        <Label text="Parametry">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <GridPane prefHeight="64.0" prefWidth="205.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="157.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="53.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="121.0" text="Liczba otwartych kas:" />
+                              <Label fx:id="labelOpenedCheckouts" text="0" GridPane.columnIndex="1" />
+                              <Label text="Liczba klientów:" GridPane.rowIndex="1" />
+                              <Label fx:id="labelAllClients" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <Label text="Statystyka">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <GridPane prefHeight="138.0" prefWidth="205.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="143.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="97.0" minWidth="7.0" prefWidth="62.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Średni czas obsługi:" />
+                              <Label text="Średnia ilość zakupów:" GridPane.rowIndex="1" />
+                              <Label prefHeight="40.0" prefWidth="143.0" text="Średni stosunek ilości klientów do otwartych kas:" wrapText="true" GridPane.rowIndex="2" />
+                              <Label fx:id="labelAverageTime" prefHeight="17.0" prefWidth="54.0" text="0" GridPane.columnIndex="1" />
+                              <Label fx:id="labelAverageProducts" prefHeight="17.0" prefWidth="54.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="labelAverageRatio" prefHeight="17.0" prefWidth="52.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

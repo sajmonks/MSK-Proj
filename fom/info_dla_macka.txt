@@ -1,0 +1,78 @@
+//OPIS PARAMETROW
+id - id klienta
+qid/queueid - nr kolejki
+products - ilość produktów jaką ma klient
+
+//OPIS DZIALANIA
+1. Sklep generuje interakcje ze nadszedl klient (klient zaczyna wykonywac zakupy).
+
+2. Jak klient wykona zakupy to federat Klient wywołuje interakcje KoniecZakupow.
+
+3. Kasa po otrzymaniu KoniecZakupow (jak nie ma wolnych miejsc) generuje OtwartoKase 
+a następnie generuje PrzydzielenieDoKolejki (klient zostaje ustawiony w kolejce)
+
+4. Gdy klient jest pierwszy w kolejce i kasa jest pusta lub otrzymal interakcje ZwolnienieKasy, rozgłasza PodejscieDoKasy 
+(ustawia sie w kasie na okreslony czas)
+
+5. Gdy klient odbierze zwolnienie kasy opuszcza sklep
+
+//DODATKOWE INFORMACJE
+- Klienci premium ustawiaja się na początek kasy mającej miejsce (bo inaczej otwierana jest nowa)
+- GUI nie wysyla nic a pobiera prawie wszystko
+- Kazdy z federatow publikuje unikalne interakcje (to znaczy nie ma dwóch federatów publikujących np. NadszedlKlient)
+
+/////////////////////////GUI----------------------------------------------------------------------------
+		this.subscribeToInteraction("OtwartoKase", new String[] {"qid"});
+		this.subscribeToInteraction("NadszedlKlient", new String[] {"id"});
+		this.subscribeToInteraction("OpuscilKlient", new String[] {"id"});
+		this.subscribeToInteraction("ZamknietoKase", new String[] {"qid"});
+		this.subscribeToInteraction("ZwolnienieKasy", new String[] {"qid"});
+		this.subscribeToInteraction("PrzydzielenieDoKolejki", new String[] {"id", "qid"});
+		this.subscribeToInteraction("PodejscieDoKasy", new String[] {"id", "queueid", "products"});
+		this.subscribeToInteraction("SredniCzasObslugi", new String[] {"mean"});
+		this.subscribeToInteraction("SredniaIloscZakupow", new String[] {"mean"});
+		this.subscribeToInteraction("SredniStosunek", new String[] {"mean"});
+//------------------------------------------------------------------------------------------------------
+
+		
+/////////////////////////STATYSTYKA----------------------------------------------------------------------------
+		this.subscribeToInteraction("NadszedlKlient", new String[] {"id"} );
+		this.subscribeToInteraction("OpuscilKlient",  new String[] {"id"});
+		this.subscribeToInteraction("PodejscieDoKasy", new String[] {"id", "queueid", "products"});
+		this.subscribeToInteraction("ZwolnienieKasy", new String[] {"qid"});
+		this.subscribeToInteraction("OtwartoKase", new String[] {"qid"});
+		this.subscribeToInteraction("ZamknietoKase", new String[] {"qid"});
+		
+		this.publishInteraction("SredniCzasObslugi");
+		this.publishInteraction("SredniaIloscZakupow");
+		this.publishInteraction("SredniStosunek");
+//------------------------------------------------------------------------------------------------------
+	
+	
+/////////////////////////Federat SKLEP ----------------------------------------------------------------------------
+		this.publishInteraction("NadszedlKlient");
+//------------------------------------------------------------------------------------------------------
+
+
+/////////////////////////Federat Klient (Customer) ----------------------------------------------------------------------------
+this.publishInteraction("KoniecZakupow");
+		this.publishInteraction("PodejscieDoKasy");
+		this.publishInteraction("OpuscilKlient");
+		
+		this.subscribeToInteraction("PrzydzielenieDoKolejki", new String[] {"id", "qid"});
+		this.subscribeToInteraction("ZwolnienieKasy", new String[] {"qid"});
+		this.subscribeToInteraction("NadszedlKlient", new String[] {"id"});
+//--------------------------------------------------------------------------------------------------------------------------
+
+/////////////////////////Federat Kasa (Ccheckout) ----------------------------------------------------------------------------
+this.publishInteraction("KoniecZakupow");
+		this.publishInteraction("PrzydzielenieDoKolejki");
+		this.publishInteraction("ZwolnienieKasy");
+		this.publishInteraction("OtwartoKase");
+		this.publishInteraction("ZamknietoKase");
+		
+		this.subscribeToInteraction("KoniecZakupow", new String[] {"id"});
+		this.subscribeToInteraction("PodejscieDoKasy", new String[] {"id", "queueid", "products"});
+//--------------------------------------------------------------------------------------------------------------------------
+
+
