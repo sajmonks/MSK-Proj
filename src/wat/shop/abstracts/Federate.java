@@ -143,6 +143,10 @@ public abstract class Federate {
 		}
 	}
 	
+	public double getSimulationTime() {
+		return fedamb.federateTime;
+	}
+	
 	public String getName() { 
 		return federateName; 
 	}

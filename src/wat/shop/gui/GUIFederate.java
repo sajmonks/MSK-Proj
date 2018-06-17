@@ -11,6 +11,7 @@ public class GUIFederate extends Federate {
 	
 	public int openedCheckouts = 0;
 	public int clientsInside = 0;
+	public int clientsAll = 0;
 	
 	public double averageRatio = 0;
 	public double averageTime = 0;
@@ -28,6 +29,7 @@ public class GUIFederate extends Federate {
 	protected void handleInteraction(Interaction inter) throws RTIexception {
 		if(inter.getName().equals("NadszedlKlient")) {
 			clientsInside++;
+			clientsAll++;
 		}
 		else if(inter.getName().equals("OpuscilKlient")) {
 			clientsInside--;

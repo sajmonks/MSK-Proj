@@ -32,6 +32,12 @@ public class GUIController {
 	private Label labelAverageProducts;
 	
 	@FXML
+	private Label labelAllClientsTogether;
+	
+	@FXML
+	private Label labelSimulationTime;
+	
+	@FXML
 	private GridPane grid;
 	
 	@FXML
@@ -160,7 +166,8 @@ public class GUIController {
 		labelAverageRatio.setText("" + (GUIFederate.instance.averageRatio == 0 ? "0" : df.format(GUIFederate.instance.averageRatio)) );
 		labelAverageTime.setText("" + (GUIFederate.instance.averageTime == 0 ? "0" : df.format(GUIFederate.instance.averageTime)));
 		labelAverageProducts.setText("" + (GUIFederate.instance.averageProducts == 0 ? "0" : df.format(GUIFederate.instance.averageProducts)));
-		
+		labelAllClientsTogether.setText("" + GUIFederate.instance.clientsAll);
+		labelSimulationTime.setText("" + GUIFederate.instance.getSimulationTime());
 	}
 
 	

@@ -157,6 +157,10 @@ public abstract class Ambassador extends NullFederateAmbassador {
 		}
 	}
 	
+	public double getSimulationTime() {
+		return this.federateTime;
+	}
+	
 	public void sortInteractions() {
 		Collections.sort(interactionList, new Interaction.TimeComparator());
 	}
